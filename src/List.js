@@ -1,11 +1,28 @@
-import React from 'react';
+import React from 'react'
 
-const List = () => {
+const List = ({ people, clearPage }) => {
+  console.log(people)
+
   return (
-    <>
-      <h2>list component</h2>
-    </>
-  );
-};
+    <div className='section'>
+      <main>
+        <div className='container'>
+          <h3>We have {people.length} Birthdays today</h3>
+          {people.map((person) => {
+            return (
+              <div className='person' key={person.id}>
+                <img src={person.img} alt={person.name} />
+                <h4>{person.name}</h4>
+                <p>{person.age}</p>
+              </div>
+            )
+          })}
 
-export default List;
+          <button onClick={clearPage}>Clear all</button>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default List
